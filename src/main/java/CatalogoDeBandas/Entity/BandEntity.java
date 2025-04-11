@@ -6,12 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Catalogo")
+@Table(name = "catalogo")
 public class BandEntity {
 
     @Id
@@ -29,4 +31,14 @@ public class BandEntity {
 
     @Column(name = "membros")
     private int membros;
+
+    @ManyToMany
+    @JoinTable(
+            name = "banda_genero",
+            joinColumns = @JoinColumn(name = "banda_id"),
+            inverseJoinColumns = @JoinColumn(name = "genero_id")
+    )
+    private List<GeneroEntity> generos;
+
+
 }
