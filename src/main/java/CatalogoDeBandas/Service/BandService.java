@@ -1,8 +1,10 @@
 package CatalogoDeBandas.Service;
 
 import CatalogoDeBandas.Entity.BandEntity;
+import CatalogoDeBandas.Entity.GeneroEntity;
 import CatalogoDeBandas.Mapper.BandMapper;
 import CatalogoDeBandas.Repository.BandRepository;
+import CatalogoDeBandas.Repository.GeneroRepository;
 import CatalogoDeBandas.Request.BandRequest;
 import CatalogoDeBandas.Response.BandResponse;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class BandService {
 
     private final BandRepository repository;
+    private final GeneroRepository generoRepository;
 
     public List<BandResponse> listar(){
        return repository.findAll()
@@ -35,7 +38,8 @@ public class BandService {
     }
 
     public BandResponse salvar(BandRequest band){
-        BandEntity salvar = repository.save(BandMapper.band(band));
+        List<GeneroEntity> generos = generoRepository.findAllById(band.generosId());
+        BandEntity salvar = repository.save(BandMapper.band(band, generos));
         return BandMapper.response(salvar);
     }
 
@@ -46,6 +50,10 @@ public class BandService {
                    a.setAno(band.ano());
                    a.setMembros(band.membros());
                    a.setDescricao(band.descricao());
+
+                   List<GeneroEntity> genero = generoRepository.findAllById(band.generosId());
+                   a.setGeneros(genero);
+
                    BandEntity salvar = repository.save(a);
                    return BandMapper.response(salvar);
                 });
