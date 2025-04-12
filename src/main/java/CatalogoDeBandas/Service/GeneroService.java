@@ -26,13 +26,9 @@ public class GeneroService {
     }
 
     //LISTAR POR ID
-    public GeneroResponse listarPorId(Long id){
+    public Optional<GeneroResponse> listarPorId(Long id){
         Optional<GeneroEntity> verificar = repository.findById(id);
-        if(verificar.isPresent()){
-            return GeneroMapper.response(verificar.get());
-        }else{
-            return null;
-        }
+        return verificar.map(GeneroMapper::response);
     }
 
     //SALVAR
@@ -42,21 +38,21 @@ public class GeneroService {
     }
 
     //ALTERAR POR ID
-    public GeneroResponse alterar(Long id, GeneroRequest request){
+    public Optional<GeneroResponse> alterar(Long id, GeneroRequest request){
         return repository.findById(id).map(alterar -> {
             alterar.setId(id);
             alterar.setNome(request.nome());
             GeneroEntity salvar = repository.save(alterar);
             return GeneroMapper.response(salvar);
-        }).orElse(null);
+        });
     }
 
     //DELETE
 
-    public GeneroResponse deletar(Long id){
+    public Optional<GeneroResponse> deletar(Long id){
         return repository.findById(id).map(deletar -> {
            repository.delete(deletar);
            return GeneroMapper.response(deletar);
-        }).orElse(null);
+        });
     }
 }
