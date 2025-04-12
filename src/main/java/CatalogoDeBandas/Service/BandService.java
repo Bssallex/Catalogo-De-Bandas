@@ -27,14 +27,9 @@ public class BandService {
                .toList();
     }
 
-    public BandResponse listarPorId(Long id){
+    public Optional<BandResponse> listarPorId(Long id){
         Optional<BandEntity> verificar = repository.findById(id);
-
-        if(verificar.isPresent()){
-            return BandMapper.response(verificar.get());
-        }else{
-            return null;
-        }
+        return verificar.map(BandMapper::response);
     }
 
     public BandResponse salvar(BandRequest band){
