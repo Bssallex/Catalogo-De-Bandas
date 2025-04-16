@@ -23,10 +23,10 @@ public class BandEntity {
     @Column(name = "nome_banda")
     private String nome;
 
-    @Column(name = "ano_criação")
+    @Column(name = "ano_criacao")
     private int ano;
 
-    @Column(name = "descrição")
+    @Column(name = "descricao")
     private String descricao;
 
     @Column(name = "membros")
