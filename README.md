@@ -15,15 +15,12 @@ Permite aos usuários catalogar bandas de rock, seja famosa ou desconhecida. O p
 O projeto segue uma arquitetura em camadas:
 
 ```
-src/C:/java/CatalogoDeBandas/
+C:/java/CatalogoDeBandas/src/
 ├── controller/     # Controllers REST
 ├── entity/         # Entidades JPA
 ├── mapper/         # Conversão entre DTOs e entidades
 ├── repository/     # Repositórios Spring Data
 └── service/        # Regras de negócio
 ```
-
-## Tecnologias Utilizadas
-
-### Backend
+### BACKEND
 - Lombok, JPA/Hibernate, PostGreSQL, H2(testes), Docker, Mapper, ResponseEntity, Flyway, Swagger/OpenAPI, Maven
