@@ -22,5 +22,5 @@ C:/java/CatalogoDeBandas/src/
 ├── repository/     # Repositórios Spring Data
 └── service/        # Regras de negócio
 ```
-### BACKEND
+### BackEnd
 - Lombok, JPA, Maven, PostGreSQL, H2(testes), Docker, Mapper, ResponseEntity, Flyway, Swagger/OpenAPI...
