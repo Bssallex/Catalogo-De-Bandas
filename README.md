@@ -1,13 +1,13 @@
 # CATÁLOGO DE BANDAS
 
-API REST para gerencir um catálogo de bandas de rock, desenvolvida com SpringBoot e arquitetura moderna.
+API REST para gerenciar um catálogo de bandas de rock, desenvolvida com SpringBoot e arquitetura moderna.
 
 ## Sobre o Projeto
 
 Permite aos usuários catalogar bandas de rock, seja famosa ou desconhecida. O projeto foi desenvolvido com foco em:
 
 - **Divulgação**: Catalogando bandas e criando um acervo onde qualquer um tem acesso
-- **Todos os Sub-Gêneros**: Metal, Glam Metal, Hard Rock, Funk Rock, Rock Alternativo...
+- **Todos os Subgêneros**: Metal, Heavy Metal, Glam Metal, Hard Rock, Funk Rock, Punk Rock, Indie, Grunge, Rock Alternativo...
 - **Escalabilidade**: Arquitetura preparada para crescimento
 
 ## Arquitetura
@@ -23,4 +23,4 @@ C:/java/CatalogoDeBandas/src/
 └── service/        # Regras de negócio
 ```
 ### BACKEND
-- Lombok, JPA/Hibernate, PostGreSQL, H2(testes), Docker, Mapper, ResponseEntity, Flyway, Swagger/OpenAPI, Maven
+- Lombok, JPA/Hibernate, Maven, PostGreSQL, H2(testes), Docker, Mapper, ResponseEntity, Flyway, Swagger/OpenAPI...
