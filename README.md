@@ -82,20 +82,20 @@ A entidade `Genero` possui:
 | Método | Endpoint             | Descrição                      | Status HTTP             |
 |--------|----------------------|--------------------------------|-------------------------|
 | GET    | `/bandas/listar`     | Lista todas as bandas          | `200 OK`                |
-| GET    | `/bandas/listar/{id}`| Lista uma banda por ID         | `200 OK` / `404 Not Found` |
+| GET    | `/bandas/listar/{id}`| Lista uma banda por ID         | `200 OK`/`404 NotFound` |
 | POST   | `/bandas/criar`      | Cria uma nova banda            | `201 Created`           |
-| PUT    | `/bandas/alterar/{id}`| Altera os dados de uma banda  | `200 OK` / `404 Not Found` |
-| DELETE | `/bandas/deletar/{id}`| Remove uma banda               | `204 No Content` / `404 Not Found` |
+| PUT    | `/bandas/alterar/{id}`| Altera os dados de uma banda  | `200 OK`/`404 NotFound` |
+| DELETE | `/bandas/deletar/{id}`| Remove uma banda               | `204 NoContent`/`404 NotFound` |
 
 ### 🎼 GeneroController
 
 | Método | Endpoint               | Descrição                       | Status HTTP             |
 |--------|------------------------|----------------------------------|-------------------------|
 | GET    | `/generos/listar`      | Lista todos os gêneros           | `200 OK`                |
-| GET    | `/generos/listar/{id}` | Lista um gênero por ID           | `200 OK` / `404 Not Found` |
+| GET    | `/generos/listar/{id}` | Lista um gênero por ID           | `200 OK`/`404 NotFound` |
 | POST   | `/generos/criar`       | Cria um novo gênero              | `201 Created`           |
-| PUT    | `/generos/alterar/{id}`| Altera os dados de um gênero     | `200 OK` / `404 Not Found` |
-| DELETE | `/generos/deletar/{id}`| Remove um gênero                 | `204 No Content` / `404 Not Found` |
+| PUT    | `/generos/alterar/{id}`| Altera os dados de um gênero     | `200 OK`/`404 NotFound` |
+| DELETE | `/generos/deletar/{id}`| Remove um gênero                 | `204 NoContent`/`404 Not Found` |
 
 ---
 
