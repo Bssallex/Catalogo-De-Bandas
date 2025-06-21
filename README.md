@@ -119,10 +119,3 @@ API REST desenvolvida para gerenciar um catálogo de **bandas de rock**, incluin
 - Acesse via: `http://localhost:8080/swagger-ui.html`  
 
 ---
-
-## 📅 Melhorias Futuras
-
-- ✅ Testes automatizados com JUnit e Mockito  
-- 🔐 Autenticação com OAuth2 (Google)  
-- 📈 Filtro por gênero, ano ou nome  
-- 🎨 Integração com front-end (Thymeleaf ou Angular)  
