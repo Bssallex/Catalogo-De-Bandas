@@ -1,4 +1,4 @@
-# 🎸 API - Catálogo de Bandas
+# 🎸 Catálogo de Bandas
 
 API REST desenvolvida para gerenciar um catálogo de **bandas de rock**, incluindo diversos subgêneros. Usuários podem cadastrar, editar e remover bandas, bem como associá-las a gêneros musicais. A aplicação é escalável, estruturada com boas práticas e preparada para produção com versionamento de banco via Flyway, documentação Swagger e execução via Docker.
 
