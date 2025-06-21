@@ -1,127 +1,128 @@
-# 🎸 CATÁLOGO DE BANDAS
+# 🎸 API - Catálogo de Bandas
 
-API RESTful desenvolvida com **Spring Boot** para gerenciar um catálogo de bandas de rock, incluindo diversos subgêneros. A aplicação é escalável, moderna e segue a arquitetura MVC, implementando boas práticas de desenvolvimento backend.
-
----
-
-## 📌 Funcionalidades
-
-### 🎸 Entidade: Bandas  
-- ✅ Cadastrar uma nova banda  
-- ✅ Listar todas as bandas  
-- ✅ Buscar banda por ID  
-- ✅ Alterar dados de uma banda  
-- ✅ Deletar banda  
-
-### 🎼 Entidade: Gênero  
-- ✅ Listar todos os gêneros  
-- ✅ Buscar gênero por ID  
-- ✅ Criar um novo gênero  
-- ✅ Atualizar um gênero existente  
-- ✅ Deletar um gênero  
-
-### 🔗 Relacionamento de Tabelas  
-- ✅ Implementação de relacionamento **Many-to-Many** entre bandas e gêneros  
+API REST desenvolvida para gerenciar um catálogo de **bandas de rock**, incluindo diversos subgêneros. Usuários podem cadastrar, editar e remover bandas, bem como associá-las a gêneros musicais. A aplicação é escalável, estruturada com boas práticas e preparada para produção com versionamento de banco via Flyway, documentação Swagger e execução via Docker.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 📊 Tecnologias e Ferramentas
 
 - Java 17  
 - Spring Boot  
 - Spring Data JPA  
-- PostgreSQL    
-- Flyway   
-- Swagger 
-- Docker  
+- Arquitetura em Camadas (MVC)  
+- Swagger / OpenAPI  
 - Lombok  
-- Maven   
+- DTOs e Mapper  
+- Maven  
+- Flyway  
+- Docker + PostgreSQL  
 - YAML  
 - ResponseEntity  
-- DTOs     
 
 ---
 
-## 🧱 Camadas da Aplicação
+## 🚀 Funcionalidades
 
-- `controller` - Camada de exposição de endpoints REST  
-- `service` - Camada de regras de negócio  
-- `repository` - Camada de persistência (Spring Data JPA)  
-- `entity` - Entidades JPA representando tabelas  
-- `mapper` - Conversão entre entidades e DTOs  
-- `request` - Objetos de entrada  
-- `response` - Objetos de saída  
+### 🎸 Bandas
 
----
+- 🔍 Listar todas as bandas  
+- 🔍 Buscar banda por ID  
+- 📝 Criar uma nova banda  
+- ✏️ Alterar dados de uma banda existente  
+- 🗑️ Deletar uma banda  
 
-## 🗃️ Entidades
+### 🎼 Gêneros
 
-### 🎵 Banda
+- 🔍 Listar todos os gêneros musicais  
+- 🔍 Buscar gênero por ID  
+- 📝 Criar um novo gênero  
+- ✏️ Alterar dados de um gênero existente  
+- 🗑️ Deletar um gênero  
 
-A entidade `Banda` contém os seguintes campos:
+### 🔗 Relacionamento
 
-- `nome`: Nome da banda  
-- `anoCriacao`: Ano de criação  
-- `descricao`: Breve histórico da banda  
-- `membros`: Lista de membros da banda  
-- `generos`: Lista de gêneros associados (**ManyToMany** com `Genero`)  
-
-### 🎼 Gênero
-
-A entidade `Genero` possui:
-
-- `nome`: Nome do gênero musical  
-- `bandas`: Lista de bandas associadas (**ManyToMany** com `Banda`)  
+- 🔄 Relacionamento **Many-to-Many** entre bandas e gêneros  
 
 ---
 
-## 🔄 Endpoints
+## 🧠 Regras de Negócio (Entidades Principais)
 
-### 🎸 BandaController
+### 🎵 `Bandas`
 
-| Método | Endpoint             | Descrição                      | Status HTTP             |
-|--------|----------------------|--------------------------------|-------------------------|
-| GET    | `/bandas/listar`     | Lista todas as bandas          | `200 OK`                |
-| GET    | `/bandas/listar/{id}`| Lista uma banda por ID         | `200 OK`/`404 NotFound` |
-| POST   | `/bandas/criar`      | Cria uma nova banda            | `201 Created`           |
-| PUT    | `/bandas/alterar/{id}`| Altera os dados de uma banda  | `200 OK`/`404 NotFound` |
-| DELETE | `/bandas/deletar/{id}`| Remove uma banda               | `204 NoContent`/`404 NotFound` |
+| Atributo    | Descrição                                 |
+|-------------|--------------------------------------------|
+| nome        | Nome da banda                              |
+| ano-criacao  | Ano de formação da banda                   |
+| descricao   | Histórico ou descrição sobre a banda       |
+| membros     | Lista com os nomes dos membros da banda    |
+| generos     | Gêneros associados (relação Many-to-Many)  |
 
-### 🎼 GeneroController
+### 🎼 `Generos`
 
-| Método | Endpoint               | Descrição                       | Status HTTP             |
-|--------|------------------------|----------------------------------|-------------------------|
-| GET    | `/generos/listar`      | Lista todos os gêneros           | `200 OK`                |
-| GET    | `/generos/listar/{id}` | Lista um gênero por ID           | `200 OK`/`404 NotFound` |
-| POST   | `/generos/criar`       | Cria um novo gênero              | `201 Created`           |
-| PUT    | `/generos/alterar/{id}`| Altera os dados de um gênero     | `200 OK`/`404 NotFound` |
-| DELETE | `/generos/deletar/{id}`| Remove um gênero                 | `204 NoContent`/`404 Not Found` |
+| Atributo | Descrição                                  |
+|----------|---------------------------------------------|
+| nome     | Nome do gênero musical (ex: Rock Alternativo) |
+| bandas   | Bandas que pertencem a este gênero (Many-to-Many) |
+
+---
+
+## 📌 Endpoints
+
+### 🎸 Bandas
+
+| Método HTTP | Caminho                     | Descrição                          | Status                   |
+|-------------|-----------------------------|------------------------------------|--------------------------|
+| GET         | /bandas/listar              | Listar todas as bandas             | 200 OK                   |
+| GET         | /bandas/listar/{id}         | Buscar banda por ID                | 200 OK / 404 Not Found   |
+| POST        | /bandas/criar               | Criar uma nova banda               | 201 Created              |
+| PUT         | /bandas/alterar/{id}        | Alterar dados da banda             | 200 OK / 404 Not Found   |
+| DELETE      | /bandas/deletar/{id}        | Deletar uma banda                  | 204 No Content / 404 Not Found |
+
+### 🎼 Gêneros
+
+| Método HTTP | Caminho                       | Descrição                         | Status                   |
+|-------------|-------------------------------|-----------------------------------|--------------------------|
+| GET         | /generos/listar               | Listar todos os gêneros           | 200 OK                   |
+| GET         | /generos/listar/{id}          | Buscar gênero por ID              | 200 OK / 404 Not Found   |
+| POST        | /generos/criar                | Criar um novo gênero              | 201 Created              |
+| PUT         | /generos/alterar/{id}         | Alterar dados de um gênero        | 200 OK / 404 Not Found   |
+| DELETE      | /generos/deletar/{id}         | Deletar um gênero                 | 204 No Content / 404 Not Found |
 
 ---
 
 ## 🔐 Configuração e Segurança
 
-- Configuração centralizada em arquivos `.yml`  
-- Variáveis de ambiente utilizadas para dados sensíveis (como credenciais e URLs)  
-- Docker para gerenciamento de containers de banco de dados  
+- Configuração via arquivos `.yml`  
+- Variáveis de ambiente para dados sensíveis  
+- Containerização com **Docker** para PostgreSQL  
+- Proteção dos endpoints pode ser implementada futuramente com **Spring Security + OAuth2**
 
 ---
 
 ## 🛠️ Migrations
 
 - Banco de dados versionado com **Flyway**  
+- Scripts organizados para garantir consistência entre ambientes  
 
 ---
 
 ## 🐳 Banco de Dados
 
-- **PostgreSQL** como banco de produção    
+- **PostgreSQL** como banco principal  
+- Execução local e em containers via Docker  
 
 ---
 
 ## 📑 Documentação da API
 
-- Documentada com **Swagger(OpenAPI)** 
+- Documentação automática com **Swagger / OpenAPI**  
+- Acesse via: `http://localhost:8080/swagger-ui.html`  
 
 ---
 
+## 📅 Melhorias Futuras
+
+- ✅ Testes automatizados com JUnit e Mockito  
+- 🔐 Autenticação com OAuth2 (Google)  
+- 📈 Filtro por gênero, ano ou nome  
+- 🎨 Integração com front-end (Thymeleaf ou Angular)  
